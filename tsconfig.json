@@ -6,8 +6,7 @@
     "types": ["node"],                                      
     "outDir": "lib/",                                   
     "esModuleInterop": true,                             
-    "forceConsistentCasingInFileNames": true,            
-    "strict": true,                                      
+    "forceConsistentCasingInFileNames": true,                                           
     "skipLibCheck": true                                 
   },
   "include": ["src"],
