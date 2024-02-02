@@ -1,10 +1,11 @@
 {
   "name": "kuspis",
   "version": "1.0.0",
-  "description": "Framework for easy creation of fast and powerful Telegram Bots ",
-  "main": "index.js",
+  "description": "Framework for easy creation of fast and powerful Telegram Bots",
+  "main": "lib/index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --project tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -15,9 +16,13 @@
     "telegram-bot"
   ],
   "author": "e4d08",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/e4d08/kuspis/issues"
   },
-  "homepage": "https://github.com/e4d08/kuspis#readme"
+  "homepage": "https://github.com/e4d08/kuspis#readme",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "telegraf": "^4.15.3"
+  }
 }
