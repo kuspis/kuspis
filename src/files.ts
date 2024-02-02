@@ -9,6 +9,11 @@ export default class Files {
 		this.kuspis = kuspis;
 	}
 
+	/**
+	 * Read the file and parse json from it
+	 * @param rawPath path to json file
+	 * @returns JSON object from the file
+	 */
 	public async loadJSON(rawPath: string) {
 		const filePath = path.isAbsolute(rawPath)
 			? rawPath
@@ -23,6 +28,11 @@ export default class Files {
 		}
 	}
 
+	/**
+	 * Read the config file and return as a JSON object
+	 * @param filePath path to config file
+	 * @returns JSON object from the file
+	 */
 	public async loadConfig(filePath: string) {
 		return await this.loadJSON(path.join('config', filePath))
 	}
