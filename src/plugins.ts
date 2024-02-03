@@ -11,7 +11,10 @@ export class PluginManager {
 	}
 
 	/**
-	 * Loads plugins listed in config/plugins.json.
+	 * Loads plugins listed in config/plugins.json and starts them.
+	 * 
+	 * preInit(), init() and start() are called in this order
+	 * consequently for each of the loaded plugins.
 	 */
 	public async loadPlugins() {
 		const startAt = Date.now();
@@ -35,15 +38,11 @@ export class PluginManager {
 		const loadedAmount = Object.keys(this.plugins).length;
 		this.kuspis.log(`Plugins loaded successfully (${loadedAmount} pcs. / ${Date.now() - startAt} ms).`);
 
-		for (let plugin of Object.values(this.plugins)) {
-			if (plugin['preInit']) await plugin['preInit'](this.kuspis);
-		}
-		
-		for (let plugin of Object.values(this.plugins)) {
-			if (plugin['init']) await plugin['init'](this.kuspis);
-		}
-
+		await this.runTask('preInit');
+		await this.runTask('init');
 		this.kuspis.log(`Plugins were initialized.`);
+
+		await this.runTask('start');
 	}
 
 	/**
@@ -70,6 +69,16 @@ export class PluginManager {
 			return this.plugins[plugin];
 		} catch {
 			throw Error(`Can't get plugin "{plugin}"!`);
+		}
+	}
+
+	/**
+	 * Runs given task for all loaded plugins.
+	 * @param task task to run
+	 */
+	private async runTask(task: string) {
+		for (let plugin of Object.values(this.plugins)) {
+			if (plugin[task]) await plugin[task](this.kuspis);
 		}
 	}
 }
