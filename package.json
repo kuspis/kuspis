@@ -12,8 +12,13 @@
     "url": "git+https://github.com/e4d08/kuspis.git"
   },
   "keywords": [
+    "kuspis",
+    "telegraf",
     "telegram",
-    "telegram-bot"
+    "telegram bot api",
+    "bot",
+    "botapi",
+    "bot framework"
   ],
   "author": "e4d08",
   "license": "MIT",
