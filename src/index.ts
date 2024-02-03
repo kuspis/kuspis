@@ -26,6 +26,10 @@ export default class Kuspis {
 		process.on('SIGINT', () => this.shutdown());
 		process.on('SIGTERM', () => this.shutdown());
 
+		process.on('warning', warning => {
+			this.warning(warning.message);
+		});
+
 		try {
 			const packageInfo = await this.files.loadJSON(`${this.dir}/../package.json`);
 			this.version = packageInfo.version;
