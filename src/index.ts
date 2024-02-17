@@ -3,6 +3,7 @@ import Files from './files.js';
 import path from 'path';
 import { PluginManager } from './plugins.js';
 import { fileURLToPath } from 'url';
+import Cmd from './cmd.js';
 
 export default class Kuspis {
 	public files = new Files(this);
@@ -16,6 +17,7 @@ export default class Kuspis {
 	public dir = path.join(path.dirname(fileURLToPath(import.meta.url)));
 	public version!: number;
 	public pluginManager = new PluginManager(this);
+	public cmd = new Cmd(this);
 
 	private shutdownCallbacks: Array<() => void> = [];
 
@@ -36,6 +38,7 @@ export default class Kuspis {
 			this.info(`Kuspis v${this.version}`);
 
 			await this.pluginManager.loadPlugins();
+			this.cmd.prompt()
 		} catch (error) {
 			this.error(`Bot start: ${error.message}`);
       		this.shutdown(1);
