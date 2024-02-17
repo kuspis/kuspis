@@ -28,6 +28,8 @@
   "homepage": "https://github.com/e4d08/kuspis#readme",
   "dependencies": {
     "chalk": "^5.3.0",
+    "sequelize": "^6.36.0",
+    "sqlite3": "^5.1.7",
     "telegraf": "^4.15.3"
   },
   "devDependencies": {
