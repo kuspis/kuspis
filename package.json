@@ -1,6 +1,6 @@
 {
   "name": "kuspis",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Framework for easy creation of fast and powerful Telegram Bots",
   "main": "lib/index.js",
   "type": "module",
